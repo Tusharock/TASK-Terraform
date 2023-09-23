@@ -33,3 +33,14 @@ Use code with caution. Learn more
 
 # Run the container
 #docker run -d -p 80:80 --name my-wordpress-container <your-docker-hub-username>/my-wordpress-image
+
+
+#Set the WordPress database connection string
+#docker exec my-wordpress wp config set DB_HOST $RDS_ENDPOINT
+#docker exec my-wordpress wp config set DB_USER my-rds-username
+#docker exec my-wordpress wp config set DB_PASSWORD my-rds-password
+#docker exec my-wordpress wp config set DB_NAME my-rds-database
+
+#Setup the WordPress:
+
+#docker exec my-wordpress wp core install --url http://localhost --title My WordPress Site --admin_user admin --admin_password my-wordpress-password
