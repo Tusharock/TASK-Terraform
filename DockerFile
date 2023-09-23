@@ -23,13 +23,13 @@ CMD ["apache2ctl", "-D", "FOREGROUND"]
 Use code with caution. Learn more
 
 # Build the Docker image
-docker build -t my-wordpress-image .
+#docker build -t my-wordpress-image .
 
 # Tag the image
-docker tag my-wordpress-image <your-docker-hub-username>/my-wordpress-image
+#docker tag my-wordpress-image <your-docker-hub-username>/my-wordpress-image
 
 # Push the image to Docker Hub
-docker push <your-docker-hub-username>/my-wordpress-image
+#docker push <your-docker-hub-username>/my-wordpress-image
 
 # Run the container
-docker run -d -p 80:80 --name my-wordpress-container <your-docker-hub-username>/my-wordpress-image
+#docker run -d -p 80:80 --name my-wordpress-container <your-docker-hub-username>/my-wordpress-image
