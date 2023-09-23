@@ -1,25 +1,25 @@
 provider "aws" {
-  region = var.region
+  region = ap-south-1
 }
 
 resource "aws_vpc" "default" {
   cidr_block = "10.0.0.2/16"
   tags = {
-    Name = "wordpress-vpc"
+    Name = "VPC-A"
   }
 }
 
 resource "aws_subnet" "public" {
   vpc_id = aws_vpc.default.id
   cidr_block = "10.0.0.0/24"
-  availability_zone = "us-east-1a"
+  availability_zone = "ap-south-1a"
   tags = {
-    Name = "wordpress-public-subnet"
+    Name = "Public-subnet"
   }
 }
 
 resource "aws_security_group" "public" {
-  name = "wordpress-public-sg"
+  name = "Public-sg"
   description = "Security group for the WordPress public subnet"
   vpc_id = aws_vpc.default.id
 
@@ -41,7 +41,7 @@ resource "aws_security_group" "public" {
 resource "aws_instance" "wordpress" {
   ami = "ami-01234567890123456"
   instance_type = "t2.micro"
-  key_name = "my-key-pair"
-  security_groups = ["wordpress-public-sg"]
+  key_name = "mumbai-key.pem"
+  security_groups = ["Public-sg"]
   subnet_id = aws_subnet.public.id
 }
